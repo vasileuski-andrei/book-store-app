@@ -1,11 +1,12 @@
 package com.idf.test;
 
 import com.idf.model.Book;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.List;
+
+import static org.testng.Assert.*;
 
 public class BookStoreTest extends BaseTest {
 
@@ -16,14 +17,16 @@ public class BookStoreTest extends BaseTest {
         String password = "Test123@";
 
         homePage = navigationService.openPage("https://demoqa.com/");
-        Assert.assertTrue(navigationService.isWebsiteCorrect());
+        assertTrue(navigationService.isWebsiteCorrect());
 
-        bookStoreApplicationPage = homePage.openBookStorePage();
-        loginPage = bookStoreApplicationPage.openLoginPage();
-        loginPage.inputCredentials(userName, password);
-        profilePage = loginPage.clickLoginButton();
+        boolean expectedResult = homePage
+                .openBookStorePage()
+                .openLoginPage()
+                .inputCredentials(userName, password)
+                .clickLoginButton()
+                .isProfilePageOpened();
 
-        Assert.assertTrue(profilePage.isProfilePageOpened());
+        assertTrue(expectedResult, "Profile Page wasn't opened");
 
     }
 
@@ -32,11 +35,11 @@ public class BookStoreTest extends BaseTest {
         List<Book> books = parserService.getDataFromApi("https://demoqa.com/BookStore/V1/Books");
         homePage = navigationService.openPage("https://demoqa.com/");
 
-        Assert.assertTrue(navigationService.isWebsiteCorrect());
+        assertTrue(navigationService.isWebsiteCorrect());
 
         bookStoreApplicationPage = homePage.openBookStorePage();
 
-        Assert.assertTrue(bookStoreApplicationPage.isBooksMatch(books));
+        assertTrue(bookStoreApplicationPage.isBooksMatch(books));
 
     }
 

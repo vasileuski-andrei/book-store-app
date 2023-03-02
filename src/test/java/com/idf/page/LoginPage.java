@@ -14,13 +14,15 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//button[@id='login']")
     private WebElement loginButton;
 
-    public void inputCredentials(String userName, String password) {
+    public LoginPage inputCredentials(String userName, String password) {
         waitingForEvents.waitForAppearanceElementAndClick(userNameField);
         userNameField.sendKeys(userName);
 
         waitingForEvents.waitForAppearanceElementAndClick(passwordField);
         passwordField.sendKeys(password);
         logger.info("Credentials were inserted");
+
+        return this;
     }
 
     public ProfilePage clickLoginButton() {
