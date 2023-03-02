@@ -13,16 +13,13 @@ public class BookStoreTest extends BaseTest {
     @Test
     public void isLoginSuccessful() {
 
-        String userName = "Andrei";
-        String password = "Test123@";
-
         homePage = navigationService.openPage("https://demoqa.com/");
         assertTrue(navigationService.isWebsiteCorrect());
 
         boolean expectedResult = homePage
                 .openBookStorePage()
                 .openLoginPage()
-                .inputCredentials(userName, password)
+                .inputCredentials(USERNAME, PASSWORD)
                 .clickLoginButton()
                 .isProfilePageOpened();
 
@@ -39,7 +36,7 @@ public class BookStoreTest extends BaseTest {
 
         bookStoreApplicationPage = homePage.openBookStorePage();
 
-        assertTrue(bookStoreApplicationPage.isBooksMatch(books));
+        assertTrue(bookStoreApplicationPage.isBooksMatch(books), "List of books aren't equal each other");
 
     }
 

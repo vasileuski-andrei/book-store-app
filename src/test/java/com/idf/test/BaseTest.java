@@ -20,6 +20,8 @@ public class BaseTest {
     protected ProfilePage profilePage;
     protected NavigationService navigationService;
     protected ParserService parserService;
+    public static final String USERNAME = "Andrei";
+    public static final String PASSWORD = "Test123@";
 
     @BeforeMethod
     public void setup() {
