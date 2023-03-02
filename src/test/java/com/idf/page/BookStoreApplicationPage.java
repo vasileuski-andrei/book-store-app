@@ -7,7 +7,7 @@ import java.util.List;
 
 public class BookStoreApplicationPage extends BasePage {
 
-    @FindBy(xpath = "//div[@class='left-pannel']//div[@class='element-group'][6]//ul[@class='menu-list']/li[@id='item-0']")
+    @FindBy(xpath = "//li[@id='item-0']/span[text()='Login']")
     private WebElement login;
 
     @FindBy(xpath = "//div[@class='rt-tbody']")

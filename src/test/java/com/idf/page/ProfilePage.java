@@ -12,6 +12,7 @@ public class ProfilePage extends BasePage {
         try {
             waitingForEvents.waitForAppearanceElementAndClick(headerProfile);
         } catch (Exception e) {
+            logger.info(e);
             return false;
         }
 
