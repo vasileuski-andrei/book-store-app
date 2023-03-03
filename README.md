@@ -10,5 +10,4 @@
 -----------------------
 
 Technologies - Java 15, Selenium Webdriver, TestNG, Maven, Lombok, Log4j
-Run from console:
-mvn -Dbrowser=chrome -Denvironment=dev -Dsurefire.suiteXmlFiles=src\test\resources\testng-smoke.xml clean test
+Run from console: mvn -Dbrowser=chrome -Denvironment=dev -Dsurefire.suiteXmlFiles=src\test\resources\testng-smoke.xml clean test

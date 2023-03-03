@@ -16,14 +16,14 @@ public class BookStoreTest extends BaseTest {
         homePage = navigationService.openPage("https://demoqa.com/");
         assertTrue(navigationService.isWebsiteCorrect());
 
-        boolean expectedResult = homePage
+        boolean actualResult = homePage
                 .openBookStorePage()
                 .openLoginPage()
                 .inputCredentials(USERNAME, PASSWORD)
                 .clickLoginButton()
                 .isProfilePageOpened();
 
-        assertTrue(expectedResult, "Profile Page wasn't opened");
+        assertTrue(actualResult, "Profile Page wasn't opened");
 
     }
 
