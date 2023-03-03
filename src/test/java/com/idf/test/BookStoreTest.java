@@ -13,9 +13,6 @@ public class BookStoreTest extends BaseTest {
     @Test
     public void isLoginSuccessful() {
 
-        homePage = navigationService.openPage("https://demoqa.com/");
-        assertTrue(navigationService.isWebsiteCorrect());
-
         boolean actualResult = homePage
                 .openBookStorePage()
                 .openLoginPage()
@@ -30,9 +27,6 @@ public class BookStoreTest extends BaseTest {
     @Test
     public void areTheListOfBooksMatch() throws IOException {
         List<Book> books = parserService.getDataFromApi("https://demoqa.com/BookStore/V1/Books");
-        homePage = navigationService.openPage("https://demoqa.com/");
-
-        assertTrue(navigationService.isWebsiteCorrect());
 
         bookStoreApplicationPage = homePage.openBookStorePage();
 
