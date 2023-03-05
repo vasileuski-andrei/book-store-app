@@ -6,11 +6,12 @@ import com.idf.page.HomePage;
 import com.idf.page.LoginPage;
 import com.idf.page.ProfilePage;
 import com.idf.service.NavigationService;
-import com.idf.service.ParserService;
+import com.idf.service.ApiService;
 import com.idf.service.TestDataReader;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 
 import static org.testng.Assert.assertTrue;
 
@@ -22,24 +23,35 @@ public class BaseTest {
     protected LoginPage loginPage;
     protected ProfilePage profilePage;
     protected NavigationService navigationService;
-    protected ParserService parserService;
+    protected ApiService apiService;
 
-    public static final String USERNAME = TestDataReader.getTestData("testdata.user.name");
-    public static final String PASSWORD = TestDataReader.getTestData("testdata.user.password");
+    public String username = null;
+    public final String password = TestDataReader.getTestData("testdata.user.password");
+
+    public static final String CREATE_USER_API_URL = "https://demoqa.com/Account/V1/User";
+    public static final String ALL_BOOKS_API_URL = "https://demoqa.com/BookStore/V1/Books";
+
+    @BeforeTest
+    public void setupPreconditions() {
+        apiService = new ApiService();
+        username = apiService.createNewUserThroughApi(CREATE_USER_API_URL, password);
+    }
 
     @BeforeMethod
     public void setup() {
         driver = DriverSingleton.getDriver();
         navigationService = new NavigationService(driver);
-        parserService = new ParserService();
-
-        homePage = navigationService.openPage("https://demoqa.com/");
-        assertTrue(navigationService.isWebsiteCorrect());
+        checkWebsite();
     }
 
     @AfterMethod(alwaysRun = true)
     public void close() {
         DriverSingleton.closeDriver();
+    }
+
+    private void checkWebsite() {
+        homePage = navigationService.openPage("https://demoqa.com/");
+        assertTrue(navigationService.isWebsiteCorrect());
     }
 
 }

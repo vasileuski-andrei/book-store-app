@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.List;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertTrue;
 
 public class BookStoreTest extends BaseTest {
 
@@ -16,7 +16,7 @@ public class BookStoreTest extends BaseTest {
         boolean actualResult = homePage
                 .openBookStorePage()
                 .openLoginPage()
-                .inputCredentials(USERNAME, PASSWORD)
+                .inputCredentials(username, password)
                 .clickLoginButton()
                 .isProfilePageOpened();
 
@@ -26,7 +26,7 @@ public class BookStoreTest extends BaseTest {
 
     @Test
     public void areTheListOfBooksMatch() throws IOException {
-        List<Book> books = parserService.getDataFromApi("https://demoqa.com/BookStore/V1/Books");
+        List<Book> books = apiService.getDataFromApi(ALL_BOOKS_API_URL);
 
         bookStoreApplicationPage = homePage.openBookStorePage();
 
