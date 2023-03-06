@@ -10,8 +10,8 @@ import com.idf.service.ApiService;
 import com.idf.service.TestDataReader;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 
 import static org.testng.Assert.assertTrue;
 
@@ -31,7 +31,7 @@ public class BaseTest {
     public static final String CREATE_USER_API_URL = "https://demoqa.com/Account/V1/User";
     public static final String ALL_BOOKS_API_URL = "https://demoqa.com/BookStore/V1/Books";
 
-    @BeforeTest
+    @BeforeClass
     public void setupPreconditions() {
         apiService = new ApiService();
         username = apiService.createNewUserThroughApi(CREATE_USER_API_URL, password);
@@ -51,6 +51,7 @@ public class BaseTest {
 
     private void checkWebsite() {
         homePage = navigationService.openPage("https://demoqa.com/");
+
         assertTrue(navigationService.isWebsiteCorrect());
     }
 

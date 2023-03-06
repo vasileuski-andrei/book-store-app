@@ -9,13 +9,7 @@ public class ProfilePage extends BasePage {
     private WebElement headerProfile;
 
     public boolean isProfilePageOpened() {
-        try {
-            waitingForEvents.waitForAppearanceElementAndClick(headerProfile);
-        } catch (Exception e) {
-            logger.info(e);
-            return false;
-        }
-
+        waitingForEvents.waitForAppearanceElementAndClick(headerProfile);
         return true;
     }
 
