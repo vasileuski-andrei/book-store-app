@@ -20,14 +20,15 @@ public class LoginPage extends BasePage {
 
         waitingForEvents.waitForAppearanceElementAndClick(passwordField);
         passwordField.sendKeys(password);
-        logger.info("Credentials were inserted");
+        log.info("Credentials were inserted");
 
         return this;
     }
 
     public ProfilePage clickLoginButton() {
         waitingForEvents.waitForAppearanceElementAndClick(loginButton);
-        logger.info("ProfilePage was opened");
+        log.info("ProfilePage was opened");
+
         return new ProfilePage();
     }
 }

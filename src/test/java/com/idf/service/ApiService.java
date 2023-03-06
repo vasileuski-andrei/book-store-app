@@ -50,6 +50,7 @@ public class ApiService {
             books.add(book);
         }
 
+        System.out.println("BEFORE LOG");
         log.info("Books from API were loaded");
 
         return books;

@@ -15,7 +15,7 @@ public class BookStoreApplicationPage extends BasePage {
 
     public LoginPage openLoginPage() {
         waitingForEvents.waitForAppearanceElementAndClick(login);
-        logger.info("LoginPage was opened");
+        log.info("LoginPage was opened");
         return new LoginPage();
     }
 
@@ -26,6 +26,8 @@ public class BookStoreApplicationPage extends BasePage {
         for (Book apiBook : apiBooks) {
             if (!uiBooks.contains(apiBook.getTitle())) return false;
         }
+        log.info("List of books from api and ui are equal each other");
+
         return true;
     }
 

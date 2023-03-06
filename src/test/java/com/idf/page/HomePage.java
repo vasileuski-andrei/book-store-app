@@ -14,7 +14,7 @@ public class HomePage extends BasePage {
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("scroll(0, 250)");
         bookStoreApplication.click();
-        logger.info("BookStoreApplicationPage was opened");
+        log.info("BookStoreApplicationPage was opened");
 
         return new BookStoreApplicationPage();
     }

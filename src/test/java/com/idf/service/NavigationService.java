@@ -23,6 +23,7 @@ public class NavigationService {
     public <T extends BasePage> T openPage(String url) {
         driver.get(url);
         log.info("Page " + url + " opened");
+
         if (pageUrl.containsKey(url)) {
             return (T) pageUrl.get(url);
         }

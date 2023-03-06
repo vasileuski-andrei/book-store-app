@@ -10,6 +10,8 @@ public class ProfilePage extends BasePage {
 
     public boolean isProfilePageOpened() {
         waitingForEvents.waitForAppearanceElementAndClick(headerProfile);
+        log.info("User successfully logged in");
+
         return true;
     }
 
